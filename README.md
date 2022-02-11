@@ -19,13 +19,22 @@
 
 路由、登录鉴权可以通过修改`src/layouts/SecurityLayout`里的逻辑进行实现
 
-# 状态管理 `generateModel`
+# 状态管理
 
+使用了 2 种状态管理
+
+## mobx
+
+目录`src/store`这里保存了全局的登录信息和一些 global 信息
+
+## react-min-model
+
+这是一个自己封装的状态管理  
 未使用 react-redux  
-使用 useContext、useReducer 实现了一个 dva 的状态管理，核心代码`src/redux/index.js`  
+使用 useContext、useReducer 实现了一个 dva 的状态管理
 最终暴露出来一个`generateModel`
 
-## 用法
+### 用法
 
 generateModel 可以接收数组、对象、requie()、例如下面 global 和 login 是一个类似于 dva 的 model 的对象。  
 connectProvider 是一个高阶组件，给传入的组件包裹上 Provider。  

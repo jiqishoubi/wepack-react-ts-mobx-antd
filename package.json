@@ -12,9 +12,6 @@
     "build:prod": "cross-env MODE=production-mode ENV=production webpack",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,vue,css,less,scss,md,json}": "prettier --write"
-  },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-table": "^2.63.2",
@@ -58,5 +55,8 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,vue,css,less,scss,md,json}": "prettier --write"
   }
 }
