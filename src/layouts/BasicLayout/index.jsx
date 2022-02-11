@@ -1,15 +1,11 @@
 import { Outlet } from 'react-router-dom'
+import { observer } from 'mobx-react'
+import login from '@/store/login'
 import ContentLayout from '@/components/layout/ContentLayout'
 import HeaderAccount from '@/components/HeaderAccount'
-import useAppModel from '@/model'
 import styles from './index.less'
 
 function Index() {
-  const {
-    state: {
-      login: { allMenu, menuTree },
-    },
-  } = useAppModel()
   return (
     <ContentLayout
       // header
@@ -21,8 +17,8 @@ function Index() {
       renderLogo={() => {
         return <div>side-logo</div>
       }}
-      allMenu={allMenu}
-      menuTree={menuTree}
+      allMenu={login.allMenu}
+      menuTree={login.menuTree}
       menuValueKey="menuCode" // 作为唯一key
       sideMenuShowSearch={true}
     >
@@ -33,4 +29,4 @@ function Index() {
   )
 }
 
-export default Index
+export default observer(Index)

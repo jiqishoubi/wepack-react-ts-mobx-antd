@@ -1,28 +1,26 @@
 import { message } from 'antd'
-import axios from 'axios'
+import axios, { Method } from 'axios'
 import { ENV_CONFIG, LOGIN_TOKEN_KEY } from './consts'
 
 const ERROR_MESSAGE = '网络异常'
 
 // data过滤一下 null undefined
-function haveValue(v) {
+function haveValue(v: any) {
   if (v === null || v === undefined) {
     return false
   }
   return true
 }
 
-/**
- *
- * @param {object} options
- * @param {string} options.url
- * @param {any} options.data
- * @param {string} [options.method='post']
- * @param {object} [options.headers={}]
- * @param {boolean} [options.errMsg=true] 默认message弹出报错信息
- * @returns
- */
-function request(options = {}) {
+interface RequestOptionsType {
+  url: string
+  data?: object
+  method?: Method
+  headers?: object
+  errMsg?: boolean
+}
+
+function request<T>(options: RequestOptionsType): Promise<T> {
   const { url, data = {}, method = 'post', headers = {}, errMsg = true, ...restOptions } = options
   const token = localStorage.getItem(LOGIN_TOKEN_KEY) || null
   // postData
@@ -40,7 +38,7 @@ function request(options = {}) {
   if (token) {
     postUrl = `${postUrl}?sessionId=${token}`
   }
-  return new Promise((resolve, reject) => {
+  return new Promise<T>((resolve, reject) => {
     return axios
       .request({
         url: postUrl,

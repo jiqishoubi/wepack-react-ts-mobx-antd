@@ -75,7 +75,7 @@ module.exports = {
   devServer: {
     compress: true,
     hot: true,
-    port: 9123,
+    port: 9113,
   },
   devtool: 'eval-source-map',
   plugins: [

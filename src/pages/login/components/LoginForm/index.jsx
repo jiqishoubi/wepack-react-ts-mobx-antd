@@ -1,18 +1,15 @@
 import { useState } from 'react'
+import { observer } from 'mobx-react'
+import login from '@/store/login'
 import { Form, Input, Button } from 'antd'
 import { UserOutlined, UnlockOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import InputSMS from '../InputSMS'
-import useAppModel from '@/model'
 import { ENV_CONFIG, LOGIN_TOKEN_KEY } from '@/utils/consts'
 import request from '@/utils/request'
 
-/**
- * @param {object} props
- */
 const Index = () => {
   const navigate = useNavigate()
-  const { dispatch } = useAppModel()
   const [formRef] = Form.useForm()
   const [submitting, setSubmitting] = useState(false)
 
@@ -35,7 +32,7 @@ const Index = () => {
       .then((data) => {
         //二、初始化信息
         localStorage.setItem(LOGIN_TOKEN_KEY, data.loginSessionId) //保存token
-        dispatch('login/initInfo')
+        login.initInfo()
         //跳转
         goto('/home')
       })
@@ -71,4 +68,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default observer(Index)

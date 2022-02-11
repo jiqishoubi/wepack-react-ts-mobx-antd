@@ -1,5 +1,4 @@
 // 登录页
-import React from 'react'
 import Footer from '@/components/layout/Footer'
 import styles from './index.less'
 import { Outlet } from 'react-router-dom' // Outlet用于渲染children
