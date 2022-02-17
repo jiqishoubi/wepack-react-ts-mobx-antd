@@ -1,25 +1,29 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "esnext",
-    "lib": ["esnext", "dom"],
-    "sourceMap": true,
-    "jsx": "react-jsx",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowJs": true, // 是否对js文件进行编译，默认是false
-    "skipLibCheck": true,
-    "experimentalDecorators": true,
     "strict": true,
+    "allowJs": true, // 是否对js文件进行编译
+    "target": "esnext",
+    "sourceMap": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true, // import * as React from 'react' 可以这么写 import React from 'react'
+    "esModuleInterop": true, // 因为很多老的js库使用了commonjs的导出方式，并且没有导出default属性，而是使用module.exports=xxx直接导出，这样会导致 import fs from 'fs';的语法引入失败。typescript为了兼容这些js库，于是引入了esModuleInterop，使import fs from 'fs'能正常使用。
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "outDir": "dist", // 输出目录？
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true, // 区分大小写
+    "noFallthroughCasesInSwitch": false, // 是否 将严格校验switch-case语法
+    "experimentalDecorators": true, // 允许装饰器
+    "suppressImplicitAnyIndexErrors": true // 允许for in遍历对象
+    // "noImplicitAny":false, // 在隐含任何类型的表达式和声明上引发错误。 let o;
+    // "noImplicitReturns": true, // 当函数中并非所有代码路径都返回值时报告错误。 // 函数的返回值
   },
+  "include": ["src", "typings.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
