@@ -1,4 +1,9 @@
 /// react--config
+
+// "0"表示忽略问题，等同于"off";
+// "1"表示给出警告，等同于"warn";
+// "2"表示直接报错，等同于"error"。
+
 {
   "env": {
     "node": true,
@@ -17,7 +22,7 @@
       "presets": ["@babel/preset-react"]
     }
   },
-  "plugins": ["html","react"],
+  "plugins": ["html", "react"],
   // 规则
   "extends": [
     "eslint:recommended",
@@ -28,6 +33,7 @@
     // common
     "no-unreachable": 1, // return 下面的代码会warning
     "no-async-promise-executor": 1, // promise里不能async
+    "no-await-in-loop": 0, // 禁止将 await 写在循环里，因为这样就无法同时发送多个异步请求了 // @off 要求太严格了，有时需要在循环中写 await
     // react
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0, // jsx中必须引入react，因为在webpack中配置了，所以关闭

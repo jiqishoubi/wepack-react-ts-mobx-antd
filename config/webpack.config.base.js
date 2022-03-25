@@ -51,10 +51,9 @@ module.exports = {
         test: /\.(css|less)$/,
         use: ['style-loader', cssLoader, lessLoader],
       },
-      // 编译文件
+      // 编译文件 // url-loader是为了把文件转换成base64，当设置limit之后一定要安装file-loader，因为大的文件要去走file-loader了
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
         use: [
           {
             loader: 'url-loader', // 小的文件转成base64
