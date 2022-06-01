@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // html模板
+
 const cssLoader = {
   loader: 'css-loader',
   options: {

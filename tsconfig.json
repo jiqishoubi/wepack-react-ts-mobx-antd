@@ -11,7 +11,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "outDir": "dist", // 输出目录？
     "baseUrl": ".",
     "paths": {

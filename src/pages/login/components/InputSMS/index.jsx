@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Input, Row } from 'antd'
 import { SafetyOutlined } from '@ant-design/icons'
 import { randomStrKey } from '@/utils/utils'
@@ -14,7 +14,7 @@ import { randomStrKey } from '@/utils/utils'
 const Index = (props) => {
   const { value = {} } = props
   const {
-    v
+    v,
     // key
   } = value
 
@@ -24,7 +24,7 @@ const Index = (props) => {
     const curV = e.target.value
     const emitValue = {
       v: curV,
-      key: keyStr
+      key: keyStr,
     }
     if (props.onChange) props.onChange(emitValue)
   }
@@ -43,11 +43,7 @@ const Index = (props) => {
         allowClear
         style={{ width: 'auto', flex: '1 0 0' }}
       />
-      <img
-        src={props.getImgSrc(keyStr)}
-        style={{ width: 'auto', height: 32, marginLeft: 10 }}
-        onClick={reset}
-      />
+      <img src={props.getImgSrc(keyStr)} style={{ width: 'auto', height: 32, marginLeft: 10 }} onClick={reset} />
     </Row>
   )
 }
