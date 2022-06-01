@@ -6,18 +6,18 @@ import { LOGIN_PATH, LOGIN_TOKEN_KEY } from '@/utils/consts'
 
 function Index() {
   const location = useLocation()
-  const token = localStorage.getItem(LOGIN_TOKEN_KEY) ?? ''
-  useEffect(() => {
-    if (token && location.pathname !== LOGIN_PATH && !login.userInfo) {
-      login.initInfo()
-    }
-  }, [])
-  /**
-   * 渲染
-   */
-  if (!token && location.pathname !== LOGIN_PATH) {
-    return <Navigate to={LOGIN_PATH} />
-  }
+  // const token = localStorage.getItem(LOGIN_TOKEN_KEY) ?? ''
+  // useEffect(() => {
+  //   if (token && location.pathname !== LOGIN_PATH && !login.userInfo) {
+  //     login.initInfo()
+  //   }
+  // }, [])
+  // /**
+  //  * 渲染
+  //  */
+  // if (!token && location.pathname !== LOGIN_PATH) {
+  //   return <Navigate to={LOGIN_PATH} />
+  // }
   return <Outlet />
 }
 
